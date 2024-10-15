@@ -1,27 +1,12 @@
-import Image from 'next/image';
+import { MovieCard } from './MovieCard';
 
 type MovieRowProps = {
   sectionTile: string;
 };
 
-type MovieCardProps = {
+export type MovieCardProps = {
   index: number;
 };
-
-const MovieCard = ({ index }: MovieCardProps) => (
-  <div
-    className='min-w-{200px} md:min-w[300px] group relative h-28 transform bg-gradient-to-t from-transparent to-black transition duration-200 ease-in hover:z-50 hover:scale-110 md:h-40 lg:h-52 lg:min-w-[400px]'
-    key={index}
-  >
-    <Image
-      src={`/item_${index}.png`}
-      fill={true}
-      sizes='100%'
-      alt={`chama_${index}`}
-      className='rounded'
-    />
-  </div>
-);
 
 export function MoviewRow({ sectionTile }: MovieRowProps) {
   return (
@@ -31,7 +16,7 @@ export function MoviewRow({ sectionTile }: MovieRowProps) {
           {sectionTile}
         </h2>
       </div>
-      <div className='scrollbar-hide -ml-8 flex space-x-4 overflow-x-scroll p-6'>
+      <div className='-ml-8 flex space-x-4 overflow-x-scroll p-6 scrollbar-hide'>
         {[1, 2, 3, 4, 5].map((item) => (
           <MovieCard index={item} key={item} />
         ))}
