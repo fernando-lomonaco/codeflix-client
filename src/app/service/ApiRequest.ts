@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3333';
+const API_URL = process.env.API_URL || 'http://localhost:3333';
 
 export interface ApiQueryParams {
   [key: string]: string | number | boolean;
@@ -33,13 +33,10 @@ export async function apiRequest<T>(
     ...query,
     ...mergedOptions,
   });
-  console.log('queryString', `${API_URL}/${endpoint}${queryString}`);
   try {
     const response = await fetch(`${API_URL}/${endpoint}${queryString}`);
     if (!response.ok) {
-      throw new Error(
-        'Something went wrong with the request: ${response.statusText}'
-      );
+      throw new Error(`API request failed: ${response.statusText}`);
     }
     return await response.json();
   } catch (error) {

@@ -6,7 +6,7 @@ import { getFeaturedMovie, getMoviesByGenre } from './service/MovieService';
 export default async function Home() {
   const featuredMovie = await getFeaturedMovie('101');
 
-  const genres = ['Action', 'Drama', 'Comedy', 'Animation'];
+  const genres = ['Action', 'Animation', 'Comedy', 'Drama', 'Romance'];
   const movies = await Promise.all(
     genres.map(async (genre) => {
       const movies = await getMoviesByGenre(genre, { _limit: 8 });
