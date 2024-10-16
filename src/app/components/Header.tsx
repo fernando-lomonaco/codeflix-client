@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { UserProfile } from './UserProfile';
 import { Logo } from './Logo';
 import { NavLinks } from './NavLinks';

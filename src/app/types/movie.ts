@@ -1,5 +1,3 @@
-import { MovieCard } from '../components/MovieCard';
-
 export type Movie = {
   id: string;
   title: string;
