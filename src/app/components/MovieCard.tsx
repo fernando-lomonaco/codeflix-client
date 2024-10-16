@@ -1,17 +1,37 @@
 import Image from 'next/image';
-import { MovieCardProps } from './MoviewRow';
+import { Movie } from '../types/movie';
+import { MovieInfo } from './MovieInfo';
 
-export const MovieCard = ({ index }: MovieCardProps) => (
+export const MovieCard = ({ movie }: { movie: Movie }) => (
   <div
-    className='min-w-{200px} md:min-w[300px] group relative h-28 transform bg-gradient-to-t from-transparent to-black transition duration-200 ease-in hover:z-50 hover:scale-110 md:h-40 lg:h-52 lg:min-w-[400px]'
-    key={index}
+    className='group relative min-h-[12vh] rounded bg-zinc-900 md:min-h-[12vw]'
+    key={movie.id}
   >
     <Image
+      src={movie.bannerFileURL}
+      alt={movie.title}
+      width={600}
+      height={400}
+      className='rounded-md object-cover object-top transition'
+    />
+    {/* <Image
       src={`/item_${index}.png`}
       fill={true}
       sizes='100%'
       alt={`chama_${index}`}
       className='rounded'
-    />
+    /> */}
+
+    <div className='invisible absolute top-0 z-10 w-full min-w-[20vw] scale-0 opacity-0 transition delay-300 duration-200 group-hover:-translate-y-[6vw] group-hover:scale-110 group-hover:opacity-100 sm:visible'>
+      <Image
+        src={movie.bannerFileURL}
+        alt={movie.title}
+        width={600}
+        height={400}
+        className='duration h-[12vw] w-full cursor-pointer rounded-t-md object-cover object-top shadow-xl transition'
+      />
+
+      <MovieInfo movie={movie} />
+    </div>
   </div>
 );
