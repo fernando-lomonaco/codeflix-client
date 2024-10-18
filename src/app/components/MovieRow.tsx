@@ -1,3 +1,5 @@
+'use client';
+
 import { Movies } from '../types/movie';
 import { MovieCard } from './MovieCard';
 
@@ -6,11 +8,7 @@ type MovieRowProps = {
   movies: Movies;
 };
 
-//export type MovieCardProps = {
-//  index: number;
-//};
-
-export function MoviewRow({ sectionTile, movies }: MovieRowProps) {
+export function MovieRow({ sectionTile, movies }: MovieRowProps) {
   return (
     <div className='mr-4 flex-col space-y-2'>
       <div className='flex'>

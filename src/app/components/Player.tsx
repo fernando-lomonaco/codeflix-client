@@ -5,7 +5,11 @@ import { MediaPlayer, MediaProvider } from '@vidstack/react';
 import { ArrowLeftIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 
-export default function Player({ movie }: { movie: Movie }) {
+type Props = {
+  movie: Movie;
+};
+
+export default async function Player({ movie }: Props) {
   return (
     <div className='flex h-screen justify-center align-middle'>
       <MediaPlayer

@@ -1,9 +1,12 @@
+'use client';
+import React, { FormEvent, ChangeEvent } from 'react';
+
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 
 interface SearchFormProps {
   searchTerm: string;
-  onSearchTermChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onSearch: (e: React.FormEvent<HTMLFormElement>) => void;
+  onSearchTermChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  onSearch: (e: FormEvent<HTMLFormElement>) => void;
 }
 export const SearchForm = ({
   searchTerm,
