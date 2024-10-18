@@ -8,16 +8,11 @@ import Link from 'next/link';
 import { SearchForm } from './SearchForm';
 import { useRouter, useSearchParams } from 'next/navigation';
 
-function Search() {
-  const params = useSearchParams();
-  return params;
-}
-
 export default function Header() {
   const isScrolled = useScroll();
   const router = useRouter();
-
-  const initialSearchTerm = Search().get('title') || '';
+  const params = useSearchParams();
+  const initialSearchTerm = params.get('title') || '';
   const [searchTerm, setSearchTerm] = useState<string>(initialSearchTerm);
 
   const onSearchTermChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,7 +21,7 @@ export default function Header() {
 
   const onSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const newParams = new URLSearchParams(Search().toString());
+    const newParams = new URLSearchParams(params.toString());
     newParams.set('title', searchTerm);
     router.push(`/search?${newParams.toString()}`);
   };
