@@ -1,7 +1,10 @@
-import { getMoviesByGenre } from './service/MovieService';
+import { Banner } from './components/Banner';
+import Header from './components/Header';
+import { MovieRow } from './components/MovieRow';
+import { getFeaturedMovie, getMoviesByGenre } from './service/MovieService';
 
 export default async function Home() {
-  //const featuredMovie = await getFeaturedMovie('101');
+  const featuredMovie = await getFeaturedMovie('101');
 
   const genres = ['Action', 'Animation', 'Comedy', 'Drama', 'Romance'];
   const movies = await Promise.all(
@@ -15,9 +18,9 @@ export default async function Home() {
 
   return (
     <div className='relative h-screen overflow-hidden bg-gradient-to-b lg:h-[140vh]'>
-      {/* <Header /> */}
+      <Header />
       <main className='relative pb-24 pl-4 lg:pl-16'>
-        {/* <Banner movie={featuredMovie} />
+        <Banner movie={featuredMovie} />
 
         {movies.map((movie) => (
           <MovieRow
@@ -25,7 +28,7 @@ export default async function Home() {
             sectionTile={movie.sectionTitle}
             movies={movie.movies}
           />
-        ))} */}
+        ))}
       </main>
     </div>
   );

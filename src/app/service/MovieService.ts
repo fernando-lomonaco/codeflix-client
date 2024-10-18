@@ -6,7 +6,6 @@ export const getMovieById = async (id: string): Promise<Movie> => {
 };
 
 export const getFeaturedMovie = async (id: string): Promise<Movie> => {
-  console.log(id);
   return apiRequest(`featured/${id}`);
 };
 
